@@ -133,9 +133,9 @@ body {
    COMPONENT BASE STYLES
    ============================================= */
 
-/* Stat card accent border */
+/* Stat card green border */
 .stat-card-accent {
-  border-left: 4px solid #94CCC6;
+  border: 2px solid rgba(28, 201, 169, 0.5);
 }
 
 /* BibTeX block */

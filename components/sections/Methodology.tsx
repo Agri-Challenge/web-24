@@ -14,7 +14,7 @@ export default function Methodology() {
         <AnimatedSection>
           <SectionHeading
             title="Cross-Team Validation"
-            subtitle="A novel evaluation paradigm that treats each team's independently collected dataset as a distinct domain — revealing how models actually generalize."
+            subtitle="A novel evaluation paradigm that treats each team's independently collected dataset as a distinct domain, revealing how models actually generalize."
           />
         </AnimatedSection>
 
@@ -32,7 +32,7 @@ export default function Methodology() {
                   Cross-Team Validation (CTV) treats datasets collected by different teams as distinct domains for training and testing. Unlike traditional cross-validation that splits data randomly, CTV preserves natural domain boundaries created by different collection methodologies, environmental contexts, and device characteristics.
                 </p>
                 <p className="text-[#5A7A8A] leading-relaxed">
-                  Each team&apos;s dataset represents a unique combination of factors — capturing authentic inter-domain variation that simulates real-world deployment scenarios.
+                  Each team&apos;s dataset represents a unique combination of factors, capturing authentic inter-domain variation that simulates real-world deployment scenarios.
                 </p>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function Methodology() {
                 Standard cross-validation with random data splits does not expose a model&apos;s true generalization ability across genuinely different domains. CTV specifically reveals the validation–test gap that standard metrics miss.
               </p>
               <blockquote className="border-l-4 border-[#1CC9A9] pl-4 italic text-sm text-[#5A7A8A]">
-                &ldquo;Validation accuracy was remarkably stable (≈98%) across all LOTO folds, while test accuracy varied by over 11 percentage points — confirming that validation accuracy alone is insufficient as a proxy for real-world generalization.&rdquo;
+                &ldquo;Validation accuracy was remarkably stable (≈98%) across all LOTO folds, while test accuracy varied by over 11 percentage points, confirming that validation accuracy alone is not a reliable proxy for real-world generalization.&rdquo;
               </blockquote>
             </div>
           </div>

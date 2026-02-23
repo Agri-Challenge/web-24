@@ -9,7 +9,7 @@ const phases = [
     duration: '2 days',
     location: 'ENSA, El Harrach, Algiers',
     description:
-      'Teams independently collected field images of 6 tree species at the experimental facilities of École Nationale Supérieure Agronomique. Each team had full freedom over their collection devices, sampling strategies, environmental coverage, and imaging protocols — generating authentic domain diversity.',
+      'Teams independently collected field images of 6 tree species at the experimental facilities of École Nationale Supérieure Agronomique. Each team had full freedom over their collection devices, sampling strategies, environmental coverage, and imaging protocols, generating authentic domain diversity.',
     accent: '#1CC9A9',
   },
   {
@@ -72,7 +72,7 @@ export default function Overview() {
                 Rather than providing participants with a fixed dataset, AgrI Challenge inverts the paradigm: each team collects their own field data, generating authentic distributional diversity.
               </p>
               <p className="text-[#5A7A8A] leading-relaxed">
-                This forces engagement with the complete machine learning pipeline — from data collection strategy to model evaluation — and produces a benchmark that reflects genuine cross-domain variation.
+                This forces engagement with the complete machine learning pipeline, from data collection strategy through to model evaluation, and produces a benchmark that reflects genuine cross-domain variation.
               </p>
             </div>
           </div>
@@ -156,11 +156,12 @@ export default function Overview() {
               &ldquo;
             </div>
             <blockquote className="relative z-10 text-white/90 text-lg font-medium italic leading-relaxed max-w-3xl">
-              Environmental diversity was the strongest correlate of generalization (r&nbsp;≈&nbsp;0.60),
-              while dataset size had little predictive value (r&nbsp;≈&nbsp;0.10).
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Collecting images across varied
+              lighting conditions, canopy heights, and environmental backgrounds proved more valuable
+              than simply increasing the number of photos.
             </blockquote>
             <figcaption className="relative z-10 mt-4 text-[#94CCC6] text-sm font-medium">
-              — Key finding from Cross-Team Validation analysis
+              Placeholder — to be updated
             </figcaption>
           </figure>
         </AnimatedSection>

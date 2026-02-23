@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, BookOpen, Images, Users, Leaf, CalendarDays } from 'lucide-react';
+import { ArrowRight, BookOpen, Images, Users, Leaf } from 'lucide-react';
 
 interface CountUpProps {
   end: number;
@@ -57,7 +57,6 @@ const stats = [
   { icon: Images, value: 50673, label: 'Total Images', suffix: '' },
   { icon: Users, value: 12, label: 'Teams', suffix: '' },
   { icon: Leaf, value: 6, label: 'Tree Species', suffix: '' },
-  { icon: CalendarDays, value: 2, label: 'Day Field Campaign', suffix: '-Day' },
 ];
 
 export default function Hero() {
@@ -126,7 +125,7 @@ export default function Hero() {
           <span className="text-[#1CC9A9] font-semibold">6 tree species</span>{' '}
           over a 2-day campaign. We introduce the{' '}
           <span className="text-white/90 font-medium">Cross-Team Validation (CTV)</span>{' '}
-          framework — a new paradigm for evaluating real-world model generalization.
+          framework, a new paradigm for evaluating real-world model generalization.
         </p>
 
         {/* CTA Buttons */}
@@ -149,25 +148,21 @@ export default function Hero() {
 
         {/* Stats row */}
         <div className="w-full max-w-3xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-3 gap-4">
             {stats.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="stat-card-accent bg-white/5 backdrop-blur-sm rounded-xl p-5 text-left border border-white/10 hover:bg-white/10 transition-all duration-200"
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-5 text-left border-2 border-[#1CC9A9]/60 hover:border-[#1CC9A9] hover:bg-white/10 transition-all duration-200"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <Icon size={18} className="text-[#94CCC6] mb-3" strokeWidth={1.5} />
                   <div className="text-2xl font-extrabold text-[#1CC9A9] font-mono leading-none mb-1">
-                    {stat.label === 'Day Field Campaign' ? (
-                      `2-Day`
-                    ) : (
-                      <CountUpStat end={stat.value} duration={1800 + i * 200} />
-                    )}
+                    <CountUpStat end={stat.value} duration={1800 + i * 200} />
                   </div>
                   <div className="text-xs text-white/55 font-medium uppercase tracking-wider">
-                    {stat.label === 'Day Field Campaign' ? 'Field Campaign' : stat.label}
+                    {stat.label}
                   </div>
                 </div>
               );

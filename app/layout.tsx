@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AgrI Challenge — Data-Centric Agricultural AI Competition",
+  title: "AgrI Challenge",
   description:
     "The AgrI Challenge is a data-centric competition framework for agricultural machine learning. 12 teams, 50,673 images, 6 tree species. Request dataset access, cite the work, and explore the Cross-Team Validation framework.",
   keywords: [
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "cross-team validation",
     "benchmark dataset",
   ],
+  icons: {
+    icon: '/logo/agriChallenge-logo.svg',
+  },
   openGraph: {
     title: "AgrI Challenge",
     description:

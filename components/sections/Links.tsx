@@ -6,7 +6,7 @@ const links = [
   {
     icon: FileText,
     label: 'arXiv Paper',
-    description: 'Read the full paper — Cross-Team Validation: A Data-Centric Framework for Evaluating Model Generalization in Collaborative Agricultural Machine Learning.',
+    description: 'Read the full paper on Cross-Team Validation: A Data-Centric Framework for Evaluating Model Generalization in Collaborative Agricultural Machine Learning.',
     href: '#arxiv',
     cta: 'Read on arXiv',
     badge: 'Coming Soon',

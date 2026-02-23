@@ -1,22 +1,6 @@
-import { Cpu, TrendingUp, Award, Zap } from 'lucide-react';
+import { Cpu, TrendingUp, Zap } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
-
-// Table 4 — Competition results (own architectures)
-const competitionResults = [
-  { team: 'SMART AGRICULTURES', valAcc: '96.7%', testAcc: '84.1%', f1: '0.84', gap: '12.7%', size: '6,321' },
-  { team: 'AI-4o',              valAcc: '94.2%', testAcc: '83.4%', f1: '0.83', gap: '10.8%', size: '7,344' },
-  { team: 'GreenAI',            valAcc: '96.7%', testAcc: '82.5%', f1: '0.83', gap: '14.2%', size: '3,785' },
-  { team: 'AiGro',              valAcc: '98.7%', testAcc: '80.3%', f1: '0.80', gap: '18.5%', size: '3,633' },
-  { team: 'CACTUS',             valAcc: '96.0%', testAcc: '80.1%', f1: '0.80', gap: '15.9%', size: '3,801' },
-  { team: 'RUSTICUS',           valAcc: '98.1%', testAcc: '79.6%', f1: '0.80', gap: '18.5%', size: '3,446' },
-  { team: 'CHAJARA',            valAcc: '98.6%', testAcc: '77.7%', f1: '0.78', gap: '20.9%', size: '2,540' },
-  { team: 'Scorpions',          valAcc: '96.0%', testAcc: '76.7%', f1: '0.77', gap: '19.2%', size: '2,795' },
-  { team: 'Condimenteum',       valAcc: '93.6%', testAcc: '71.7%', f1: '0.73', gap: '21.9%', size: '5,504' },
-  { team: 'PLT',                valAcc: '98.2%', testAcc: '69.9%', f1: '0.71', gap: '28.4%', size: '6,556' },
-  { team: 'The Neural Ninjas',  valAcc: '97.6%', testAcc: '67.4%', f1: '0.68', gap: '30.2%', size: '1,642' },
-  { team: 'Organization team',  valAcc: '99.2%', testAcc: '63.3%', f1: '0.63', gap: '35.9%', size: '3,306' },
-];
 
 export default function Results() {
   return (
@@ -131,7 +115,7 @@ export default function Results() {
                   </div>
                 </div>
                 <p className="text-xs text-[#5A7A8A] mt-4 leading-relaxed">
-                  The gap between validation and test accuracy emerged by epoch 5 and remained stable throughout training — indicating distributional shift, not overfitting.
+                  The gap between validation and test accuracy emerged by epoch 5 and remained stable throughout training, indicating distributional shift rather than overfitting.
                 </p>
               </div>
             ))}
@@ -216,7 +200,7 @@ export default function Results() {
         {/* Key Finding */}
         <AnimatedSection delay={250}>
           <div
-            className="p-8 rounded-2xl mb-16"
+            className="p-8 rounded-2xl"
             style={{ background: 'linear-gradient(135deg, #10243D 0%, #1a3a52 100%)' }}
           >
             <div className="flex items-start gap-4">
@@ -243,55 +227,6 @@ export default function Results() {
                   Once sufficient data diversity is present, architecture choice has diminishing returns.
                 </p>
               </div>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Competition Results Table */}
-        <AnimatedSection delay={300}>
-          <h3 className="text-lg font-semibold text-[#10243D] mb-6 flex items-center gap-2">
-            <Award size={18} className="text-[#94CCC6]" strokeWidth={1.5} />
-            Competition Results — Teams&apos; Own Architectures
-          </h3>
-          <p className="text-sm text-[#5A7A8A] mb-4 max-w-2xl">
-            Each team used their own architecture and training strategy. Mean validation accuracy: 96.77% ± 1.70%. Mean test accuracy: 76.41% ± 6.73%.
-          </p>
-          <div
-            className="rounded-2xl border border-[#E8EEEE] overflow-hidden"
-            style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.07)' }}
-          >
-            <div className="overflow-x-auto">
-              <table className="data-table" aria-label="Competition results with teams' own architectures">
-                <thead>
-                  <tr>
-                    <th scope="col">Team</th>
-                    <th scope="col">Val Acc</th>
-                    <th scope="col">Test Acc</th>
-                    <th scope="col">F1 Score</th>
-                    <th scope="col">Gap</th>
-                    <th scope="col" className="total-cell">Dataset Size</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {competitionResults.map((row, i) => (
-                    <tr key={row.team}>
-                      <td className="font-medium text-[#10243D]">
-                        {i < 3 && (
-                          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#1CC9A9]/15 text-[#1CC9A9] text-[10px] font-bold mr-2">
-                            {i + 1}
-                          </span>
-                        )}
-                        {row.team}
-                      </td>
-                      <td>{row.valAcc}</td>
-                      <td className="font-semibold text-[#1CC9A9]">{row.testAcc}</td>
-                      <td>{row.f1}</td>
-                      <td className="text-red-400">{row.gap}</td>
-                      <td className="total-cell">{row.size}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
           </div>
         </AnimatedSection>

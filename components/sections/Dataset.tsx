@@ -64,7 +64,7 @@ export default function Dataset() {
         <AnimatedSection>
           <SectionHeading
             title="Dataset"
-            subtitle="50,673 field images spanning 6 tree species, collected by 12 independent teams — then curated into a 47,367-image clean benchmark."
+            subtitle="50,673 field images spanning 6 tree species, collected by 12 independent teams and curated into a 47,367-image clean benchmark."
           />
         </AnimatedSection>
 

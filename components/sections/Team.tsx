@@ -1,4 +1,5 @@
-import { Building2, Mail, Users } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Users } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -6,18 +7,20 @@ const institutions = [
   {
     abbreviation: 'ENSA',
     fullName: 'École Nationale Supérieure Agronomique',
-    role: 'Field data collection host — Data Collection Phase',
+    role: 'Field data collection host, Data Collection Phase',
     description:
-      'A long-established and widely recognized agronomic institution in Algeria (founded in 1905). The experimental and teaching facilities at ENSA, El Harrach, provided access to representative agro-ecosystems and well-maintained plant collections.',
+      'A long-established agronomic institution in Algeria, founded in 1905. The experimental and teaching facilities at ENSA, El Harrach, provided access to representative agro-ecosystems and well-maintained plant collections.',
     location: 'El Harrach, Algiers, Algeria',
+    logo: '/logo/ensa_logo.jpg',
   },
   {
     abbreviation: 'ENSIA',
     fullName: 'École Nationale Supérieure d\'Intelligence Artificielle',
-    role: 'Model development host — Model Development Phase',
+    role: 'Model development host, Model Development Phase',
     description:
-      'A national center of excellence dedicated to education and research in artificial intelligence and data science. ENSIA specialists in AI and machine learning mentored teams during the modeling phase.',
+      'A national center of excellence dedicated to education and research in artificial intelligence and data science. ENSIA specialists in AI and machine learning mentored teams throughout the modeling phase.',
     location: 'Algiers, Algeria',
+    logo: '/logo/ensia_logo.png',
   },
 ];
 
@@ -46,8 +49,14 @@ export default function Team() {
                 style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#10243D] flex items-center justify-center shrink-0">
-                    <Building2 size={20} className="text-white" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white border border-[#E8EEEE] flex items-center justify-center">
+                    <Image
+                      src={inst.logo}
+                      alt={`${inst.abbreviation} logo`}
+                      width={48}
+                      height={48}
+                      className="object-contain w-full h-full"
+                    />
                   </div>
                   <div>
                     <div className="text-2xl font-extrabold text-[#10243D] leading-none">{inst.abbreviation}</div>
@@ -74,7 +83,7 @@ export default function Team() {
             <div>
               <h3 className="font-semibold text-[#10243D] mb-2">12 Interdisciplinary Teams</h3>
               <p className="text-sm text-[#5A7A8A] leading-relaxed">
-                The challenge brought together 12 interdisciplinary teams — each combining students with computer science / AI backgrounds and students with agriculture / forestry / plant science backgrounds. This mixed composition was mandated to ensure both ecological validity of annotations and technical robustness of the machine learning systems.
+                The challenge brought together 12 interdisciplinary teams, each combining students with computer science and AI backgrounds with students from agriculture, forestry, and plant science. This mixed composition was required to ensure both ecological validity of annotations and technical robustness of the machine learning systems.
               </p>
             </div>
           </div>
