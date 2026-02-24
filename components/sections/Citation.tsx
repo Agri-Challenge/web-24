@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, FileText, Github, ArrowUpRight, Clock } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -130,6 +130,63 @@ export default function Citation() {
             <p className="mt-5 text-xs text-[#5A7A8A]/70 italic">
               Author names and arXiv ID will be updated upon paper publication.
             </p>
+          </AnimatedSection>
+
+          {/* Paper & Repository links */}
+          <AnimatedSection delay={300}>
+            <div className="mt-10 pt-8 border-t border-[#E8EEEE]">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-[#5A7A8A] mb-5">
+                Paper &amp; Repository
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    icon: FileText,
+                    label: 'arXiv Paper',
+                    desc: 'Full paper with methodology, results, and supplementary material.',
+                    href: '#arxiv',
+                    cta: 'Read on arXiv',
+                  },
+                  {
+                    icon: Github,
+                    label: 'GitHub Repository',
+                    desc: 'Data preparation scripts, CTV framework, and baseline training code.',
+                    href: '#github',
+                    cta: 'View on GitHub',
+                  },
+                ].map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="group flex items-start gap-4 p-5 rounded-xl bg-[#F8FAFA] border border-[#E8EEEE] hover:border-[#94CCC6] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(16,36,61,0.10)]"
+                      aria-label={`${link.label} — available upon publication`}
+                    >
+                      <div className="p-2 rounded-lg bg-[#10243D] group-hover:bg-[#1CC9A9] transition-colors duration-200 shrink-0">
+                        <Icon size={16} className="text-white" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <span className="font-semibold text-sm text-[#10243D] group-hover:text-[#1CC9A9] transition-colors duration-200">
+                            {link.label}
+                          </span>
+                          <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-[#5A7A8A] shrink-0">
+                            <Clock size={10} />
+                            Soon
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#5A7A8A] leading-relaxed mb-2">{link.desc}</p>
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#5A7A8A] group-hover:text-[#1CC9A9] transition-colors duration-200">
+                          {link.cta}
+                          <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </div>

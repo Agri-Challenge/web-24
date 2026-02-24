@@ -7,7 +7,6 @@ import Methodology from "@/components/sections/Methodology";
 import Results from "@/components/sections/Results";
 import RequestAccess from "@/components/sections/RequestAccess";
 import Citation from "@/components/sections/Citation";
-import Links from "@/components/sections/Links";
 import Team from "@/components/sections/Team";
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
         <Results />
         <RequestAccess />
         <Citation />
-        <Links />
         <Team />
       </main>
       <Footer />

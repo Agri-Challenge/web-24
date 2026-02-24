@@ -154,9 +154,9 @@ export default function Dataset() {
         <AnimatedSection delay={200}>
           <h3 className="text-lg font-semibold text-[#10243D] mb-8 flex items-center gap-2">
             <Cpu size={18} className="text-[#94CCC6]" strokeWidth={1.5} />
-            Collection & Preparation Pipeline
+            Collection &amp; Preparation Pipeline
           </h3>
-          <div className="relative mb-20">
+          <div className="relative mb-12">
             {/* Connecting line */}
             <div
               className="hidden md:block absolute left-8 top-8 bottom-8 w-px bg-[#E8EEEE]"
@@ -192,11 +192,9 @@ export default function Dataset() {
               })}
             </div>
           </div>
-        </AnimatedSection>
 
-        {/* ── Pipeline summary stats ── */}
-        <AnimatedSection delay={250}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+          {/* Summary stats inline */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { value: '50,673', label: 'Raw Images', sub: 'before curation' },
               { value: '7,209', label: 'Duplicates Removed', sub: 'via perceptual hashing' },
@@ -215,41 +213,6 @@ export default function Dataset() {
                 <div className="text-xs text-[#5A7A8A]">{item.sub}</div>
               </div>
             ))}
-          </div>
-        </AnimatedSection>
-
-        {/* ── Device Diversity ── */}
-        <AnimatedSection delay={300}>
-          <div
-            className="p-7 rounded-2xl border border-[#E8EEEE] bg-[#F8FAFA]"
-            style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}
-          >
-            <h3 className="text-lg font-semibold text-[#10243D] mb-4">Device Diversity</h3>
-            <p className="text-[#5A7A8A] leading-relaxed mb-6 max-w-2xl">
-              Images were captured using{' '}
-              <span className="font-semibold text-[#10243D]">over 40 different device models</span>,
-              reflecting substantial diversity in acquisition conditions, sensor characteristics,
-              and image quality.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {[
-                { device: 'iPhone 11', count: '~6,900 images' },
-                { device: 'Oppo Reno5', count: '~5,400 images' },
-                { device: 'Samsung Galaxy A54 5G', count: '~3,100 images' },
-                { device: 'Oppo Reno7', count: '~2,400 images' },
-              ].map((d) => (
-                <div
-                  key={d.device}
-                  className="p-3 rounded-lg bg-white border border-[#E8EEEE] text-center"
-                >
-                  <div className="text-xs font-semibold text-[#10243D] mb-0.5">{d.device}</div>
-                  <div className="text-xs text-[#1CC9A9] font-medium">{d.count}</div>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-[#5A7A8A] mt-4">
-              Note: ~11,000 images have no device metadata recorded.
-            </p>
           </div>
         </AnimatedSection>
       </div>

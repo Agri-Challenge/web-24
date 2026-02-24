@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Mail, Users } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -71,26 +71,8 @@ export default function Team() {
           </div>
         </AnimatedSection>
 
-        {/* Teams note */}
-        <AnimatedSection delay={150}>
-          <div
-            className="mb-12 p-6 rounded-2xl bg-[#F8FAFA] border border-[#E8EEEE] flex gap-4 items-start"
-            style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.05)' }}
-          >
-            <div className="p-2.5 rounded-xl bg-[#94CCC6]/15 shrink-0">
-              <Users size={20} className="text-[#10243D]" strokeWidth={1.5} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-[#10243D] mb-2">12 Interdisciplinary Teams</h3>
-              <p className="text-sm text-[#5A7A8A] leading-relaxed">
-                The challenge brought together 12 interdisciplinary teams, each combining students with computer science and AI backgrounds with students from agriculture, forestry, and plant science. This mixed composition was required to ensure both ecological validity of annotations and technical robustness of the machine learning systems.
-              </p>
-            </div>
-          </div>
-        </AnimatedSection>
-
         {/* Contact */}
-        <AnimatedSection delay={200}>
+        <AnimatedSection delay={150}>
           <div
             className="p-7 rounded-2xl border border-[#E8EEEE] bg-white flex gap-4 items-start"
             style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}
