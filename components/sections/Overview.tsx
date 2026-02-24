@@ -39,40 +39,36 @@ export default function Overview() {
           />
         </AnimatedSection>
 
-        {/* Problem statement */}
+        {/* Problem + Approach — unified */}
         <AnimatedSection delay={100}>
-          <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
+          <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="p-6 rounded-2xl bg-white border border-[#E8EEEE]"
+              style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-red-50">
-                  <AlertTriangle size={20} className="text-red-400" strokeWidth={1.5} />
+                <div className="p-2 rounded-lg bg-red-50 shrink-0">
+                  <AlertTriangle size={18} className="text-red-400" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-semibold text-[#10243D]">The Generalization Gap Problem</h3>
+                <h3 className="font-semibold text-[#10243D]">The Generalization Gap</h3>
               </div>
-              <p className="text-[#5A7A8A] leading-relaxed mb-4">
-                Machine learning models for agricultural applications frequently achieve high accuracy on benchmark datasets yet struggle to generalize under real-world field conditions.
-              </p>
-              <p className="text-[#5A7A8A] leading-relaxed">
-                The PlantVillage dataset is a striking example: models trained on its controlled laboratory images achieve{' '}
+              <p className="text-sm text-[#5A7A8A] leading-relaxed">
+                Models trained on controlled laboratory datasets achieve{' '}
                 <span className="font-semibold text-[#10243D]">over 99% accuracy</span>{' '}
-                on the benchmark — yet drop to{' '}
-                <span className="font-semibold text-red-500">54% when deployed in actual farm environments</span>.
-                This gap is not a model problem. It is a data problem.
+                on benchmarks, yet drop to{' '}
+                <span className="font-semibold text-red-500">54% in real farm environments</span>.
+                This is not a model problem — it is a data problem.
               </p>
             </div>
 
-            <div>
+            <div className="p-6 rounded-2xl bg-white border border-[#E8EEEE]"
+              style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-[#1CC9A9]/10">
-                  <Lightbulb size={20} className="text-[#1CC9A9]" strokeWidth={1.5} />
+                <div className="p-2 rounded-lg bg-[#1CC9A9]/10 shrink-0">
+                  <Lightbulb size={18} className="text-[#1CC9A9]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-semibold text-[#10243D]">The AgrI Challenge Approach</h3>
+                <h3 className="font-semibold text-[#10243D]">The AgrI Challenge Approach</h3>
               </div>
-              <p className="text-[#5A7A8A] leading-relaxed mb-4">
-                Rather than providing participants with a fixed dataset, AgrI Challenge inverts the paradigm: each team collects their own field data, generating authentic distributional diversity.
-              </p>
-              <p className="text-[#5A7A8A] leading-relaxed">
-                This forces engagement with the complete machine learning pipeline, from data collection strategy through to model evaluation, and produces a benchmark that reflects genuine cross-domain variation.
+              <p className="text-sm text-[#5A7A8A] leading-relaxed">
+                Rather than providing a fixed dataset, each team independently collects their own field data — generating authentic distributional diversity across devices, environments, and sampling strategies.
               </p>
             </div>
           </div>
@@ -139,31 +135,6 @@ export default function Overview() {
               </div>
             ))}
           </div>
-        </AnimatedSection>
-
-        {/* Pull-out quote */}
-        <AnimatedSection delay={250}>
-          <figure
-            className="relative p-8 rounded-2xl overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #10243D 0%, #1a3a52 100%)' }}
-          >
-            {/* Decorative quote mark */}
-            <div
-              className="absolute top-4 left-8 text-[8rem] font-serif leading-none select-none pointer-events-none"
-              style={{ color: 'rgba(148,204,198,0.12)' }}
-              aria-hidden="true"
-            >
-              &ldquo;
-            </div>
-            <blockquote className="relative z-10 text-white/90 text-lg font-medium italic leading-relaxed max-w-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Collecting images across varied
-              lighting conditions, canopy heights, and environmental backgrounds proved more valuable
-              than simply increasing the number of photos.
-            </blockquote>
-            <figcaption className="relative z-10 mt-4 text-[#94CCC6] text-sm font-medium">
-              Placeholder — to be updated
-            </figcaption>
-          </figure>
         </AnimatedSection>
       </div>
     </section>
