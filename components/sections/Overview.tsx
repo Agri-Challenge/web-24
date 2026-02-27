@@ -1,4 +1,4 @@
-import { AlertTriangle, Lightbulb, Users, Brain } from 'lucide-react';
+import { Users, Brain } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -34,69 +34,34 @@ export default function Overview() {
         {/* Header */}
         <AnimatedSection>
           <SectionHeading
-            title="About the Challenge"
-            subtitle="The AgrI Challenge addresses a critical gap between laboratory benchmark performance and real-world agricultural deployment."
+            title="What is AgrI Challenge?"
+            subtitle="A participant-led AI competition where each team independently collects their own field data — generating authentic, real-world distributional diversity."
           />
         </AnimatedSection>
 
-        {/* Problem + Approach — unified */}
-        <AnimatedSection delay={100}>
-          <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="p-6 rounded-2xl bg-white border border-[#E8EEEE]"
-              style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-red-50 shrink-0">
-                  <AlertTriangle size={18} className="text-red-400" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold text-[#10243D]">The Generalization Gap</h3>
-              </div>
-              <p className="text-sm text-[#5A7A8A] leading-relaxed">
-                Models trained on controlled laboratory datasets achieve{' '}
-                <span className="font-semibold text-[#10243D]">over 99% accuracy</span>{' '}
-                on benchmarks, yet drop to{' '}
-                <span className="font-semibold text-red-500">54% in real farm environments</span>.
-                This is not a model problem — it is a data problem.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-[#E8EEEE]"
-              style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-[#1CC9A9]/10 shrink-0">
-                  <Lightbulb size={18} className="text-[#1CC9A9]" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold text-[#10243D]">The AgrI Challenge Approach</h3>
-              </div>
-              <p className="text-sm text-[#5A7A8A] leading-relaxed">
-                Rather than providing a fixed dataset, each team independently collects their own field data — generating authentic distributional diversity across devices, environments, and sampling strategies.
-              </p>
-            </div>
-          </div>
-        </AnimatedSection>
-
         {/* Interdisciplinary requirement */}
-        <AnimatedSection delay={150}>
+        <AnimatedSection delay={100}>
           <div className="mb-16 p-6 rounded-2xl border border-[#E8EEEE] bg-white flex gap-5 items-start"
             style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}>
             <div className="p-2.5 rounded-xl bg-[#94CCC6]/15 shrink-0 mt-0.5">
               <Users size={22} className="text-[#10243D]" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-semibold text-[#10243D] mb-2">Interdisciplinary Teams Required</h3>
+              <h3 className="font-semibold text-[#10243D] mb-2">Interdisciplinary Teams</h3>
               <p className="text-[#5A7A8A] leading-relaxed text-sm">
-                Each of the 12 teams was required to combine students from computing backgrounds (computer science, AI, data science) with students from ecological or agronomic backgrounds (agriculture, forestry, plant sciences). This mixed composition guaranteed high-quality species labeling grounded in domain expertise while supporting effective ML system design.
+                Each of the 12 teams combined students from computing backgrounds (computer science, AI, data science) with students from ecological or agronomic backgrounds (agriculture, forestry, plant sciences). This mixed composition guaranteed high-quality species labeling grounded in domain expertise while supporting effective ML system design.
               </p>
             </div>
           </div>
         </AnimatedSection>
 
         {/* Two phases timeline */}
-        <AnimatedSection delay={200}>
+        <AnimatedSection delay={150}>
           <h3 className="text-xl font-semibold text-[#10243D] mb-8 flex items-center gap-3">
             <Brain size={20} className="text-[#94CCC6]" strokeWidth={1.5} />
             Competition Phases
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {phases.map((phase) => (
               <div
                 key={phase.number}

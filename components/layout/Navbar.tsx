@@ -5,12 +5,12 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Overview', href: '#overview' },
-  { label: 'Dataset', href: '#dataset' },
+  { label: 'What is AgrI?', href: '#overview' },
+  { label: 'Why AgrI?', href: '#why-agri' },
+  { label: 'Organizers', href: '#team' },
   { label: 'Methodology', href: '#methodology' },
   { label: 'Results', href: '#results' },
   { label: 'Cite', href: '#citation' },
-  { label: 'Team', href: '#team' },
 ];
 
 export default function Navbar() {

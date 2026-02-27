@@ -197,39 +197,7 @@ export default function Results() {
           </div>
         </AnimatedSection>
 
-        {/* Key Finding */}
-        <AnimatedSection delay={250}>
-          <div
-            className="p-8 rounded-2xl"
-            style={{ background: 'linear-gradient(135deg, #10243D 0%, #1a3a52 100%)' }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="p-2.5 rounded-xl bg-[#1CC9A9]/20 shrink-0 mt-0.5">
-                <Zap size={20} className="text-[#1CC9A9]" strokeWidth={1.5} />
-              </div>
-              <div>
-                <h4 className="font-bold text-white mb-3">Key Finding</h4>
-                <p className="text-white/80 text-sm leading-relaxed mb-4">
-                  Environmental diversity was the primary driver of generalization performance across teams.
-                  Dataset size, by contrast, was nearly uncorrelated with test accuracy.
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                    <div className="text-2xl font-extrabold text-[#1CC9A9] font-mono">r ≈ 0.60</div>
-                    <div className="text-xs text-white/60 mt-1">Environmental Diversity → Generalization</div>
-                  </div>
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                    <div className="text-2xl font-extrabold text-[#94CCC6] font-mono">r ≈ 0.10</div>
-                    <div className="text-xs text-white/60 mt-1">Dataset Size → Generalization</div>
-                  </div>
-                </div>
-                <p className="text-white/60 text-xs mt-4">
-                  Once sufficient data diversity is present, architecture choice has diminishing returns.
-                </p>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
+
       </div>
     </section>
   );

@@ -34,8 +34,8 @@ export default function Team() {
       <div className="max-w-[1200px] mx-auto px-6">
         <AnimatedSection>
           <SectionHeading
-            title="Team & Contact"
-            subtitle="The AgrI Challenge was organized through a collaboration between two leading Algerian academic institutions."
+            title="Where & Who"
+            subtitle="The AgrI Challenge was organized through a collaboration between two leading Algerian academic institutions, held across two campuses in Algiers."
           />
         </AnimatedSection>
 
