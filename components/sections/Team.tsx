@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Mail } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -12,6 +12,7 @@ const institutions = [
       'A long-established agronomic institution in Algeria, founded in 1905. The experimental and teaching facilities at ENSA, El Harrach, provided access to representative agro-ecosystems and well-maintained plant collections.',
     location: 'El Harrach, Algiers, Algeria',
     logo: '/logo/ensa_logo.jpg',
+    website: 'https://www.ensa.dz',
   },
   {
     abbreviation: 'ENSIA',
@@ -21,6 +22,7 @@ const institutions = [
       'A national center of excellence dedicated to education and research in artificial intelligence and data science. ENSIA specialists in AI and machine learning mentored teams throughout the modeling phase.',
     location: 'Algiers, Algeria',
     logo: '/logo/ensia_logo.png',
+    website: 'https://www.ensia.edu.dz',
   },
 ];
 
@@ -28,14 +30,14 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="py-24 lg:py-32 bg-white"
+      className="py-24 lg:py-32 bg-[#F8FAFA]"
       aria-labelledby="team-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">
         <AnimatedSection>
           <SectionHeading
-            title="Team & Contact"
-            subtitle="The AgrI Challenge was organized through a collaboration between two leading Algerian academic institutions."
+            title="Where & Who"
+            subtitle="The AgrI Challenge was organized through a collaboration between two leading Algerian academic institutions, held across two campuses in Algiers."
           />
         </AnimatedSection>
 
@@ -65,7 +67,16 @@ export default function Team() {
                 </div>
                 <h3 className="font-semibold text-[#10243D] text-sm mb-1">{inst.fullName}</h3>
                 <div className="text-xs font-medium text-[#1CC9A9] mb-3">{inst.role}</div>
-                <p className="text-sm text-[#5A7A8A] leading-relaxed">{inst.description}</p>
+                <p className="text-sm text-[#5A7A8A] leading-relaxed mb-4">{inst.description}</p>
+                <a
+                  href={inst.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#10243D] hover:text-[#1CC9A9] transition-colors duration-200 group"
+                >
+                  <ExternalLink size={12} strokeWidth={2} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  {inst.website.replace('https://www.', '')}
+                </a>
               </div>
             ))}
           </div>

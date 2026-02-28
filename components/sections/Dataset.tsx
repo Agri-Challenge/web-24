@@ -1,14 +1,14 @@
-import { TreePine, Database, Cpu, Shield } from 'lucide-react';
+import { TreePine, Database } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
 const species = [
-  { common: 'Caroubier', scientific: 'Ceratonia siliqua', english: 'Carob tree' },
-  { common: 'Chêne', scientific: 'Quercus spp.', english: 'Oak' },
-  { common: 'Faux poivrier', scientific: 'Schinus molle', english: 'Peruvian pepper tree' },
-  { common: 'Frêne', scientific: 'Fraxinus spp.', english: 'Ash' },
-  { common: 'Pistachier', scientific: 'Pistacia vera', english: 'Pistachio' },
-  { common: 'Tipu', scientific: 'Tipuana tipu', english: 'Tipuana' },
+  { english: 'Carob', scientific: 'Ceratonia siliqua' },
+  { english: 'Oak', scientific: 'Quercus spp.' },
+  { english: 'Peruvian Pepper', scientific: 'Schinus molle' },
+  { english: 'Ash', scientific: 'Fraxinus spp.' },
+  { english: 'Pistachio', scientific: 'Pistacia vera' },
+  { english: 'Tipuana', scientific: 'Tipuana tipu' },
 ];
 
 const tableData = [
@@ -27,30 +27,6 @@ const tableData = [
 ];
 
 const totals = { caroubier: 7879, chene: 9128, faux: 8791, frene: 8345, pist: 7886, tipu: 8644, total: 50673 };
-
-const pipelineSteps = [
-  {
-    step: '01',
-    icon: Shield,
-    title: 'Curation & Quality Assurance',
-    description:
-      'All 50,673 images were systematically catalogued with standardized metadata: file format, resolution, file size, acquisition device (from EXIF), and a 64-bit perceptual hash. Seven common image formats were documented.',
-  },
-  {
-    step: '02',
-    icon: Database,
-    title: 'Duplicate Detection & Removal',
-    description:
-      '13,579 records were involved in 6,370 duplicate groups (sizes 2–7). A deterministic retention rule preserved the highest-quality image per group. Result: 7,209 duplicate images removed, recovering ~9.6 GB of storage.',
-  },
-  {
-    step: '03',
-    icon: Cpu,
-    title: 'Resizing & Normalisation',
-    description:
-      'All retained images were resized to 336×336 px using bicubic interpolation with centre-crop for non-square images. Storage reduced from 121.7 GB to 2.9 GB (97.6% reduction). Final clean dataset: 47,367 images.',
-  },
-];
 
 export default function Dataset() {
   return (
@@ -77,16 +53,15 @@ export default function Dataset() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
             {species.map((sp) => (
               <div
-                key={sp.common}
+                key={sp.english}
                 className="p-4 rounded-xl bg-[#F8FAFA] border border-[#E8EEEE] hover:border-[#94CCC6] hover:-translate-y-1 transition-all duration-200 text-center"
                 style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.05)' }}
               >
                 <div className="w-10 h-10 rounded-full bg-[#94CCC6]/15 flex items-center justify-center mx-auto mb-3">
                   <TreePine size={18} className="text-[#10243D]" strokeWidth={1.5} />
                 </div>
-                <div className="font-semibold text-sm text-[#10243D] mb-0.5">{sp.common}</div>
-                <div className="text-xs italic text-[#5A7A8A] mb-1">{sp.scientific}</div>
-                <div className="text-xs text-[#5A7A8A]/70">{sp.english}</div>
+                <div className="font-semibold text-sm text-[#10243D] mb-0.5">{sp.english}</div>
+                <div className="text-xs italic text-[#5A7A8A]">{sp.scientific}</div>
               </div>
             ))}
           </div>
@@ -110,12 +85,12 @@ export default function Dataset() {
                 <thead>
                   <tr>
                     <th scope="col" className="rounded-tl-2xl">Team</th>
-                    <th scope="col">Caroubier</th>
-                    <th scope="col">Chêne</th>
-                    <th scope="col">Faux poivrier</th>
-                    <th scope="col">Frêne</th>
-                    <th scope="col">Pistachier</th>
-                    <th scope="col">Tipu</th>
+                    <th scope="col">Carob</th>
+                    <th scope="col">Oak</th>
+                    <th scope="col">Peruvian Pepper</th>
+                    <th scope="col">Ash</th>
+                    <th scope="col">Pistachio</th>
+                    <th scope="col">Tipuana</th>
                     <th scope="col" className="total-cell rounded-tr-2xl">Total</th>
                   </tr>
                 </thead>
@@ -147,72 +122,6 @@ export default function Dataset() {
                 </tfoot>
               </table>
             </div>
-          </div>
-        </AnimatedSection>
-
-        {/* ── Preparation Pipeline ── */}
-        <AnimatedSection delay={200}>
-          <h3 className="text-lg font-semibold text-[#10243D] mb-8 flex items-center gap-2">
-            <Cpu size={18} className="text-[#94CCC6]" strokeWidth={1.5} />
-            Collection &amp; Preparation Pipeline
-          </h3>
-          <div className="relative mb-12">
-            {/* Connecting line */}
-            <div
-              className="hidden md:block absolute left-8 top-8 bottom-8 w-px bg-[#E8EEEE]"
-              aria-hidden="true"
-            />
-            <div className="flex flex-col gap-6">
-              {pipelineSteps.map((step, i) => {
-                const Icon = step.icon;
-                return (
-                  <div key={step.step} className="relative flex gap-6 items-start">
-                    {/* Step indicator */}
-                    <div
-                      className="relative z-10 shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center border-2 border-[#E8EEEE] bg-white"
-                      style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.06)' }}
-                    >
-                      <Icon size={22} className="text-[#10243D]" strokeWidth={1.5} />
-                      <span
-                        className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#1CC9A9] text-white text-[10px] font-bold flex items-center justify-center"
-                      >
-                        {i + 1}
-                      </span>
-                    </div>
-                    {/* Content */}
-                    <div
-                      className="flex-1 p-5 rounded-xl bg-[#F8FAFA] border border-[#E8EEEE]"
-                      style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.04)' }}
-                    >
-                      <h4 className="font-semibold text-[#10243D] mb-2">{step.title}</h4>
-                      <p className="text-sm text-[#5A7A8A] leading-relaxed">{step.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Summary stats inline */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { value: '50,673', label: 'Raw Images', sub: 'before curation' },
-              { value: '7,209', label: 'Duplicates Removed', sub: 'via perceptual hashing' },
-              { value: '47,367', label: 'Clean Images', sub: 'final dataset' },
-              { value: '97.6%', label: 'Storage Reduction', sub: '121.7 GB → 2.9 GB' },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="stat-card-accent bg-[#F8FAFA] rounded-xl p-5"
-                style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.05)' }}
-              >
-                <div className="text-2xl font-extrabold text-[#1CC9A9] font-mono leading-none mb-1">
-                  {item.value}
-                </div>
-                <div className="text-sm font-semibold text-[#10243D] mb-0.5">{item.label}</div>
-                <div className="text-xs text-[#5A7A8A]">{item.sub}</div>
-              </div>
-            ))}
           </div>
         </AnimatedSection>
       </div>

@@ -2,6 +2,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Overview from "@/components/sections/Overview";
+import WhyAgrI from "@/components/sections/WhyAgrI";
+import Gallery from "@/components/sections/Gallery";
 import Dataset from "@/components/sections/Dataset";
 import Methodology from "@/components/sections/Methodology";
 import Results from "@/components/sections/Results";
@@ -16,12 +18,14 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Overview />
-        <Dataset />
+        <WhyAgrI />
+        <Team />
+        <Gallery />
         <Methodology />
+        <Dataset />
         <Results />
         <RequestAccess />
         <Citation />
-        <Team />
       </main>
       <Footer />
     </>

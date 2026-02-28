@@ -41,7 +41,7 @@ export default function Citation() {
   return (
     <section
       id="citation"
-      className="py-24 lg:py-32 bg-white"
+      className="py-24 lg:py-32 bg-[#F8FAFA]"
       aria-labelledby="citation-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">
