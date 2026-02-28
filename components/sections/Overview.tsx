@@ -1,3 +1,6 @@
+'use client';
+
+import Image from 'next/image';
 import { Users, Brain } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -31,12 +34,48 @@ export default function Overview() {
       aria-labelledby="overview-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">
-        {/* Header */}
+
+        {/* ── Logo + Title intro ── */}
         <AnimatedSection>
-          <SectionHeading
-            title="What is AgrI Challenge?"
-            subtitle="A participant-led AI competition where each team independently collects their own field data — generating authentic, real-world distributional diversity."
-          />
+          <div className="flex flex-col items-center text-center mb-16">
+            {/* Logo with hover tilt + glow */}
+            <div className="relative mb-8 group cursor-default">
+              {/* Soft glow ring behind the logo */}
+              <div
+                className="absolute inset-0 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
+                style={{ background: 'radial-gradient(circle, rgba(28,201,169,0.25) 0%, transparent 70%)' }}
+                aria-hidden="true"
+              />
+              <div className="relative w-24 h-24 transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-6 drop-shadow-lg group-hover:drop-shadow-2xl">
+                <Image
+                  src="/logo/agriChallenge-logo.svg"
+                  alt="AgrI Challenge logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Title + subtitle */}
+            <h2
+              id="overview-heading"
+              className="text-3xl lg:text-4xl font-extrabold text-[#10243D] mb-4 tracking-tight"
+            >
+              What is AgrI Challenge?
+            </h2>
+            <p className="text-[#5A7A8A] text-base lg:text-lg leading-relaxed max-w-2xl">
+              A participant-led AI competition where each team independently collects their
+              own field data — generating authentic, real-world distributional diversity.
+            </p>
+
+            {/* Subtle divider */}
+            <div className="mt-10 flex items-center gap-3" aria-hidden="true">
+              <div className="h-px w-16 bg-[#E8EEEE]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#94CCC6]" />
+              <div className="h-px w-16 bg-[#E8EEEE]" />
+            </div>
+          </div>
         </AnimatedSection>
 
         {/* Interdisciplinary requirement */}

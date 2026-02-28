@@ -20,10 +20,10 @@ export default function Home() {
         <Overview />
         <WhyAgrI />
         <Team />
+        <Gallery />
         <Methodology />
         <Dataset />
         <Results />
-        <Gallery />
         <RequestAccess />
         <Citation />
       </main>
