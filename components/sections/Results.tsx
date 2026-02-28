@@ -6,7 +6,7 @@ export default function Results() {
   return (
     <section
       id="results"
-      className="py-24 lg:py-32 bg-white"
+      className="py-24 lg:py-32 bg-[#F8FAFA]"
       aria-labelledby="results-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">

@@ -30,7 +30,7 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="py-24 lg:py-32 bg-white"
+      className="py-24 lg:py-32 bg-[#F8FAFA]"
       aria-labelledby="team-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">

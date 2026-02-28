@@ -84,7 +84,7 @@ export default function RequestAccess() {
   return (
     <section
       id="request-access"
-      className="py-24 lg:py-32 bg-[#F8FAFA]"
+      className="py-24 lg:py-32 bg-white"
       aria-labelledby="request-access-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">
