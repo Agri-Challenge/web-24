@@ -29,7 +29,11 @@ export const metadata: Metadata = {
     "benchmark dataset",
   ],
   icons: {
-    icon: '/logo/agriChallenge-logo.svg',
+    icon: [
+      { url: '/logo/agriChallenge-logo.png', type: 'image/png' },
+      { url: '/logo/agriChallenge-logo.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/logo/agriChallenge-logo.png',
   },
   openGraph: {
     title: "AgrI Challenge",

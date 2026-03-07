@@ -6,18 +6,20 @@ const links = [
   {
     icon: FileText,
     label: 'arXiv Paper',
-    description: 'Read the full paper on Cross-Team Validation: A Data-Centric Framework for Evaluating Model Generalization in Collaborative Agricultural Machine Learning.',
+    description: 'Read the full paper on AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision.',
     href: '#arxiv',
     cta: 'Read on arXiv',
-    badge: 'Coming Soon',
+    badge: 'Coming Soon' as string | null,
+    external: false,
   },
   {
     icon: Github,
     label: 'GitHub Repository',
     description: 'Explore the full codebase: data preparation scripts, CTV evaluation framework, baseline training pipelines, and reproducibility resources.',
-    href: '#github',
+    href: 'https://github.com/Agri-Challenge/agri-challenge-scripts-2024',
     cta: 'View on GitHub',
-    badge: 'Coming Soon',
+    badge: null as string | null,
+    external: true,
   },
 ];
 
@@ -32,7 +34,7 @@ export default function Links() {
         <AnimatedSection>
           <SectionHeading
             title="Paper & Repository"
-            subtitle="The full paper and complete codebase will be publicly available upon publication."
+            subtitle="The full paper and complete codebase are available below."
           />
         </AnimatedSection>
 
@@ -44,17 +46,21 @@ export default function Links() {
                 <a
                   key={link.label}
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="group relative p-8 rounded-2xl bg-white border border-[#E8EEEE] hover:border-[#94CCC6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(16,36,61,0.12)] flex flex-col"
                   style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.07)' }}
-                  aria-label={`${link.label} — ${link.badge}`}
+                  aria-label={link.badge ? `${link.label} — ${link.badge}` : link.label}
                 >
-                  {/* Badge */}
-                  <div className="absolute top-5 right-5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F8FAFA] border border-[#E8EEEE]">
-                    <Clock size={11} className="text-[#5A7A8A]" />
-                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#5A7A8A]">
-                      {link.badge}
-                    </span>
-                  </div>
+                  {/* Badge — only shown when present */}
+                  {link.badge && (
+                    <div className="absolute top-5 right-5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F8FAFA] border border-[#E8EEEE]">
+                      <Clock size={11} className="text-[#5A7A8A]" />
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-[#5A7A8A]">
+                        {link.badge}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Icon */}
                   <div className="mb-5 w-12 h-12 rounded-2xl bg-[#10243D] flex items-center justify-center group-hover:bg-[#1CC9A9] transition-colors duration-300">
@@ -82,7 +88,7 @@ export default function Links() {
 
         <AnimatedSection delay={200}>
           <p className="mt-8 text-sm text-[#5A7A8A]/70 italic">
-            Links will be activated upon arXiv submission. The design is final — only the URLs need to be updated.
+            The arXiv link will be activated upon paper publication.
           </p>
         </AnimatedSection>
       </div>

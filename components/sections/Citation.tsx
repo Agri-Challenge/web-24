@@ -5,17 +5,20 @@ import { Copy, Check, FileText, Github, ArrowUpRight, Clock } from 'lucide-react
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
-const bibtex = `@article{agrichallenge2026,
-  title   = {Cross-Team Validation: A Data-Centric Framework for Evaluating
-             Model Generalization in Collaborative Agricultural
-             Machine Learning},
-  author  = {[Author Names]},
+const bibtex = `@article{brahimi2026agrichallenge,
+  title   = {AgrI Challenge: Cross-Team Insights from a Data-Centric
+             AI Competition in Agricultural Vision},
+  author  = {Brahimi, Mohammed and Laabassi, Karim and
+             {Hadj Ameur}, Mohamed Seghir and Boutorh, Aicha and
+             Siab-Farsi, Badia and Khouani, Amin and
+             Zouak, Omar Farouk and Bouziane, Seif Eddine and
+             Lakhdari, Kheira and Benghanem, Abdelkader Nabil},
   journal = {arXiv preprint},
   year    = {2026},
   url     = {https://arxiv.org/abs/XXXX.XXXXX}
 }`;
 
-const apa = `[Author Names]. (2026). Cross-Team Validation: A Data-Centric Framework for Evaluating Model Generalization in Collaborative Agricultural Machine Learning. arXiv preprint. https://arxiv.org/abs/XXXX.XXXXX`;
+const apa = `Brahimi, M., Laabassi, K., Hadj Ameur, M. S., Boutorh, A., Siab-Farsi, B., Khouani, A., Zouak, O. F., Bouziane, S. E., Lakhdari, K., & Benghanem, A. N. (2026). AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision. arXiv preprint. https://arxiv.org/abs/XXXX.XXXXX`;
 
 export default function Citation() {
   const [copied, setCopied] = useState(false);
@@ -60,10 +63,10 @@ export default function Citation() {
               style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.06)' }}
             >
               <h3 className="font-bold text-[#10243D] text-base leading-snug mb-2">
-                Cross-Team Validation: A Data-Centric Framework for Evaluating Model Generalization in Collaborative Agricultural Machine Learning
+                AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision
               </h3>
               <p className="text-sm text-[#5A7A8A] mb-2">
-                [Author Names] · 2026 · arXiv preprint
+                Brahimi, Laabassi, Hadj Ameur, Boutorh, Siab-Farsi, Khouani, Zouak, Bouziane, Lakhdari &amp; Benghanem · 2026 · arXiv preprint
               </p>
               <a
                 href="#arxiv"
@@ -128,7 +131,7 @@ export default function Citation() {
           {/* Note */}
           <AnimatedSection delay={250}>
             <p className="mt-5 text-xs text-[#5A7A8A]/70 italic">
-              Author names and arXiv ID will be updated upon paper publication.
+              The arXiv ID will be updated upon paper publication.
             </p>
           </AnimatedSection>
 
@@ -146,13 +149,17 @@ export default function Citation() {
                     desc: 'Full paper with methodology, results, and supplementary material.',
                     href: '#arxiv',
                     cta: 'Read on arXiv',
+                    soon: true,
+                    external: false,
                   },
                   {
                     icon: Github,
                     label: 'GitHub Repository',
                     desc: 'Data preparation scripts, CTV framework, and baseline training code.',
-                    href: '#github',
+                    href: 'https://github.com/Agri-Challenge/agri-challenge-scripts-2024',
                     cta: 'View on GitHub',
+                    soon: false,
+                    external: true,
                   },
                 ].map((link) => {
                   const Icon = link.icon;
@@ -160,8 +167,10 @@ export default function Citation() {
                     <a
                       key={link.label}
                       href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
                       className="group flex items-start gap-4 p-5 rounded-xl bg-[#F8FAFA] border border-[#E8EEEE] hover:border-[#94CCC6] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(16,36,61,0.10)]"
-                      aria-label={`${link.label} — available upon publication`}
+                      aria-label={link.soon ? `${link.label} — available upon publication` : link.label}
                     >
                       <div className="p-2 rounded-lg bg-[#10243D] group-hover:bg-[#1CC9A9] transition-colors duration-200 shrink-0">
                         <Icon size={16} className="text-white" strokeWidth={1.5} />
@@ -171,10 +180,12 @@ export default function Citation() {
                           <span className="font-semibold text-sm text-[#10243D] group-hover:text-[#1CC9A9] transition-colors duration-200">
                             {link.label}
                           </span>
-                          <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-[#5A7A8A] shrink-0">
-                            <Clock size={10} />
-                            Soon
-                          </span>
+                          {link.soon && (
+                            <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-[#5A7A8A] shrink-0">
+                              <Clock size={10} />
+                              Soon
+                            </span>
+                          )}
                         </div>
                         <p className="text-xs text-[#5A7A8A] leading-relaxed mb-2">{link.desc}</p>
                         <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#5A7A8A] group-hover:text-[#1CC9A9] transition-colors duration-200">

@@ -158,7 +158,7 @@ export default function Hero() {
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <Icon size={18} className="text-[#94CCC6] mb-3" strokeWidth={1.5} />
-                  <div className="text-2xl font-extrabold text-[#1CC9A9] font-mono leading-none mb-1">
+                  <div className="text-xl sm:text-2xl font-extrabold text-[#1CC9A9] font-mono leading-none mb-1 break-all">
                     <CountUpStat end={stat.value} duration={1800 + i * 200} />
                   </div>
                   <div className="text-xs text-white/55 font-medium uppercase tracking-wider">

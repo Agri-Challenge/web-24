@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { CheckCircle, Loader2, ShieldCheck, Ban, Share2, BookOpen, AlertTriangle } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -100,16 +100,84 @@ export default function RequestAccess() {
           <div className="max-w-2xl mx-auto">
             {/* Intro card */}
             <div
-              className="mb-8 p-5 rounded-xl bg-white border border-[#E8EEEE] text-sm text-[#5A7A8A] leading-relaxed"
+              className="mb-6 p-5 rounded-xl bg-white border border-[#E8EEEE] text-sm text-[#5A7A8A] leading-relaxed"
               style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.05)' }}
             >
               <p>
-                The dataset contains <strong className="text-[#10243D]">47,367 field images</strong> of
+                The dataset contains <strong className="text-[#10243D]">50,673 field images</strong> of
                 6 tree species collected by 12 teams under the AgrI Challenge framework.
                 Access is granted for academic and research use only. Upon submission, your
                 request will be reviewed and you will receive a response at the provided email
                 address.
               </p>
+            </div>
+
+            {/* License & Access Conditions */}
+            <div
+              className="mb-8 rounded-xl border border-[#E8EEEE] overflow-hidden"
+              style={{ boxShadow: '0 2px 12px rgba(16,36,61,0.05)' }}
+            >
+              <div className="bg-[#10243D] px-5 py-3 flex items-center gap-2">
+                <ShieldCheck size={16} className="text-[#1CC9A9]" strokeWidth={1.5} />
+                <span className="text-sm font-bold text-white">Data License &amp; Access Conditions</span>
+              </div>
+              <div className="bg-white px-5 py-5">
+                <p className="text-xs text-[#5A7A8A] mb-4 leading-relaxed">
+                  By requesting access to the AgrI Challenge dataset you agree to all of the following conditions:
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {[
+                    {
+                      icon: Ban,
+                      color: 'text-red-400',
+                      bg: 'bg-red-50',
+                      title: 'Non-Commercial Use Only',
+                      desc: 'The dataset may only be used for academic, educational, and non-commercial research purposes. Any commercial use, including but not limited to product development, commercial services, or for-profit applications, is strictly prohibited.',
+                    },
+                    {
+                      icon: Share2,
+                      color: 'text-amber-500',
+                      bg: 'bg-amber-50',
+                      title: 'No Redistribution',
+                      desc: 'You may not share, publish, redistribute, sublicense, or make the dataset (or any portion of it) publicly available in any form. If a collaborator requires access, they must submit their own individual request to the authors.',
+                    },
+                    {
+                      icon: BookOpen,
+                      color: 'text-[#1CC9A9]',
+                      bg: 'bg-[#1CC9A9]/10',
+                      title: 'Mandatory Citation',
+                      desc: 'Any publication, report, or presentation that uses or references this dataset must cite the AgrI Challenge paper. See the Citation section for the correct BibTeX and APA formats.',
+                    },
+                    {
+                      icon: AlertTriangle,
+                      color: 'text-[#10243D]',
+                      bg: 'bg-[#10243D]/5',
+                      title: 'No Derivative Datasets',
+                      desc: 'You may not create and distribute datasets derived from the AgrI Challenge data without explicit written permission from the corresponding author (mohamed.brahimi@ensia.edu.dz).',
+                    },
+                    {
+                      icon: ShieldCheck,
+                      color: 'text-indigo-500',
+                      bg: 'bg-indigo-50',
+                      title: 'Responsible Use',
+                      desc: 'The dataset must be used in a manner consistent with applicable privacy laws and ethical research standards. You are responsible for ensuring your use complies with your institution\'s policies.',
+                    },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <li key={item.title} className="flex items-start gap-3">
+                        <div className={`mt-0.5 p-1.5 rounded-lg ${item.bg} shrink-0`}>
+                          <Icon size={13} className={item.color} strokeWidth={2} />
+                        </div>
+                        <div>
+                          <span className="text-xs font-semibold text-[#10243D]">{item.title}. </span>
+                          <span className="text-xs text-[#5A7A8A] leading-relaxed">{item.desc}</span>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
 
             {/* Success state */}
@@ -262,7 +330,7 @@ export default function RequestAccess() {
                         </div>
                       </div>
                       <span className="text-sm text-[#5A7A8A] leading-relaxed">
-                        I agree to use this dataset for <strong className="text-[#10243D]">non-commercial research purposes only</strong> and to cite the AgrI Challenge paper in any publication using this data.
+                        I have read and agree to the <strong className="text-[#10243D]">data license and access conditions</strong> above, including non-commercial use only, no redistribution, and mandatory citation of the AgrI Challenge paper in any publication using this dataset.
                       </span>
                     </label>
                     {errors.agreed && (

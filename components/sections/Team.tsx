@@ -97,13 +97,13 @@ export default function Team() {
                 For questions about the dataset, access requests, or research collaboration:
               </p>
               <a
-                href="mailto:contact@email.com"
+                href="mailto:mohamed.brahimi@ensia.edu.dz"
                 className="text-sm font-semibold text-[#1CC9A9] hover:underline"
               >
-                contact@email.com
+                mohamed.brahimi@ensia.edu.dz
               </a>
               <p className="text-xs text-[#5A7A8A]/70 mt-3 italic">
-                Full author names and affiliations will be listed here upon paper publication.
+                Corresponding author: Dr. Mohammed Brahimi, ENSIA, Algiers, Algeria.
               </p>
             </div>
           </div>

@@ -10,7 +10,7 @@ const quickLinks = [
 
 const externalLinks = [
   { label: 'arXiv Paper', href: '#arxiv' },
-  { label: 'GitHub Repository', href: '#github' },
+  { label: 'GitHub Repository', href: 'https://github.com/Agri-Challenge/agri-challenge-scripts-2024' },
 ];
 
 export default function Footer() {
