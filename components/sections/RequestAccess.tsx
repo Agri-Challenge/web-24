@@ -1,15 +1,23 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useRef, FormEvent } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { CheckCircle, Loader2, ShieldCheck, Ban, Share2, BookOpen, AlertTriangle } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
-// ─── Formspree ───────────────────────────────────────────────────────────────
-// 1. Sign up at https://formspree.io (free)
-// 2. Create a new form → set the notification email → copy the Form ID
-// 3. Replace the placeholder below with your real Form ID (e.g. "xpwzgkld")
-const FORMSPREE_ID = 'xvzwgawo';
+// ─── Web3Forms ────────────────────────────────────────────────────────────────
+// 1. Go to https://web3forms.com and enter your notification email.
+// 2. You will receive an Access Key by email – paste it below.
+// 3. hCaptcha is enabled by default on Web3Forms; no extra setup needed.
+const WEB3FORMS_ACCESS_KEY = 'e631b2ab-e7c6-4586-817a-78bca1ff70d0';
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─── hCaptcha ─────────────────────────────────────────────────────────────────
+// Web3Forms bundles its own hCaptcha site key for free accounts.
+// If you add your own hCaptcha site key in the Web3Forms dashboard, replace the
+// value below with YOUR site key; otherwise leave the default one.
+const HCAPTCHA_SITE_KEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface FormData {
@@ -32,12 +40,14 @@ const initialForm: FormData = {
 
 export default function RequestAccess() {
   const [form, setForm] = useState<FormData>(initialForm);
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<FormData> & { captcha?: string }>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
 
   const validate = () => {
-    const errs: Partial<FormData> = {};
+    const errs: Partial<FormData> & { captcha?: string } = {};
     if (!form.fullName.trim()) errs.fullName = 'Full name is required.';
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       errs.email = 'A valid email address is required.';
@@ -46,6 +56,7 @@ export default function RequestAccess() {
     if (!form.purpose.trim() || form.purpose.trim().length < 20)
       errs.purpose = 'Please describe your research purpose (at least 20 characters).';
     if (!form.agreed) errs.agreed = 'You must agree to the terms.' as unknown as boolean;
+    if (!captchaToken) errs.captcha = 'Please complete the CAPTCHA verification.';
     return errs;
   };
 
@@ -59,29 +70,40 @@ export default function RequestAccess() {
     setErrors({});
     setSubmitting(true);
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          fullName: form.fullName,
+          access_key: WEB3FORMS_ACCESS_KEY,
+          // hCaptcha token validated server-side by Web3Forms
+          'h-captcha-response': captchaToken,
+          // Honeypot – bots fill this in, real users never see it
+          botcheck: '',
+          // Form fields
+          name: form.fullName,
           email: form.email,
           institution: form.institution,
           position: form.position,
           purpose: form.purpose,
-          // _replyto lets you reply directly to the requester from your email client
-          _replyto: form.email,
-          // _subject customises the email subject line in your inbox
-          _subject: `[AgrI Challenge] Dataset Access Request – ${form.fullName}`,
+          subject: `[AgrI Challenge] Dataset Access Request – ${form.fullName}`,
+          from_name: 'AgrI Challenge Website',
         }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         setSubmitted(true);
         setForm(initialForm);
+        setCaptchaToken(null);
+        captchaRef.current?.resetCaptcha();
       } else {
-        setErrors({ fullName: 'Submission failed. Please try again or contact us directly.' });
+        setErrors({ fullName: data.message ?? 'Submission failed. Please try again or contact us directly.' });
+        captchaRef.current?.resetCaptcha();
+        setCaptchaToken(null);
       }
     } catch {
       setErrors({ fullName: 'Network error. Please try again later.' });
+      captchaRef.current?.resetCaptcha();
+      setCaptchaToken(null);
     } finally {
       setSubmitting(false);
     }
@@ -212,6 +234,17 @@ export default function RequestAccess() {
                 className="bg-white rounded-2xl p-8 border border-[#E8EEEE]"
                 style={{ boxShadow: '0 4px 24px rgba(16,36,61,0.07)' }}
               >
+                {/* Honeypot – hidden from real users; bots fill it in and get rejected */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  readOnly
+                />
+
                 <div className="flex flex-col gap-5">
                   {/* Full Name */}
                   <div>
@@ -348,6 +381,25 @@ export default function RequestAccess() {
                       <p id="agreed-err" className="mt-1.5 text-xs text-red-500">
                         {errors.agreed as unknown as string}
                       </p>
+                    )}
+                  </div>
+
+                  {/* hCaptcha */}
+                  <div>
+                    <HCaptcha
+                      ref={captchaRef}
+                      sitekey={HCAPTCHA_SITE_KEY}
+                      onVerify={(token: string) => {
+                        setCaptchaToken(token);
+                        setErrors((prev) => ({ ...prev, captcha: undefined }));
+                      }}
+                      onExpire={() => {
+                        setCaptchaToken(null);
+                      }}
+                      theme="light"
+                    />
+                    {errors.captcha && (
+                      <p className="mt-1.5 text-xs text-red-500">{errors.captcha}</p>
                     )}
                   </div>
 
