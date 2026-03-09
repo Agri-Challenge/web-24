@@ -5,6 +5,13 @@ import { CheckCircle, Loader2, ShieldCheck, Ban, Share2, BookOpen, AlertTriangle
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
+// ─── Formspree ───────────────────────────────────────────────────────────────
+// 1. Sign up at https://formspree.io (free)
+// 2. Create a new form → set the notification email → copy the Form ID
+// 3. Replace the placeholder below with your real Form ID (e.g. "xpwzgkld")
+const FORMSPREE_ID = 'xvzwgawo';
+// ─────────────────────────────────────────────────────────────────────────────
+
 interface FormData {
   fullName: string;
   email: string;
@@ -52,7 +59,7 @@ export default function RequestAccess() {
     setErrors({});
     setSubmitting(true);
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -61,6 +68,10 @@ export default function RequestAccess() {
           institution: form.institution,
           position: form.position,
           purpose: form.purpose,
+          // _replyto lets you reply directly to the requester from your email client
+          _replyto: form.email,
+          // _subject customises the email subject line in your inbox
+          _subject: `[AgrI Challenge] Dataset Access Request – ${form.fullName}`,
         }),
       });
       if (res.ok) {
