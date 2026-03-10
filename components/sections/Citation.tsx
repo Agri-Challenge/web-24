@@ -15,10 +15,10 @@ const bibtex = `@article{brahimi2026agrichallenge,
              Lakhdari, Kheira and Benghanem, Abdelkader Nabil},
   journal = {arXiv preprint},
   year    = {2026},
-  url     = {https://arxiv.org/abs/XXXX.XXXXX}
+  url     = {https://arxiv.org/abs/2603.07356}
 }`;
 
-const apa = `Brahimi, M., Laabassi, K., Hadj Ameur, M. S., Boutorh, A., Siab-Farsi, B., Khouani, A., Zouak, O. F., Bouziane, S. E., Lakhdari, K., & Benghanem, A. N. (2026). AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision. arXiv preprint. https://arxiv.org/abs/XXXX.XXXXX`;
+const apa = `Brahimi, M., Laabassi, K., Hadj Ameur, M. S., Boutorh, A., Siab-Farsi, B., Khouani, A., Zouak, O. F., Bouziane, S. E., Lakhdari, K., & Benghanem, A. N. (2026). AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision. arXiv preprint. https://arxiv.org/abs/2603.07356`;
 
 export default function Citation() {
   const [copied, setCopied] = useState(false);
@@ -69,11 +69,12 @@ export default function Citation() {
                 Brahimi, Laabassi, Hadj Ameur, Boutorh, Siab-Farsi, Khouani, Zouak, Bouziane, Lakhdari &amp; Benghanem · 2026 · arXiv preprint
               </p>
               <a
-                href="#arxiv"
+                href="https://arxiv.org/abs/2603.07356"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm text-[#1CC9A9] font-medium hover:underline"
               >
-                arXiv:XXXX.XXXXX
-                <span className="text-[#5A7A8A] text-xs">(link available upon publication)</span>
+                arXiv:2603.07356
               </a>
             </div>
           </AnimatedSection>
@@ -131,7 +132,7 @@ export default function Citation() {
           {/* Note */}
           <AnimatedSection delay={250}>
             <p className="mt-5 text-xs text-[#5A7A8A]/70 italic">
-              The arXiv ID will be updated upon paper publication.
+              arXiv ID: 2603.07356
             </p>
           </AnimatedSection>
 
@@ -147,10 +148,10 @@ export default function Citation() {
                     icon: FileText,
                     label: 'arXiv Paper',
                     desc: 'Full paper with methodology, results, and supplementary material.',
-                    href: '#arxiv',
+                    href: 'https://arxiv.org/abs/2603.07356',
                     cta: 'Read on arXiv',
-                    soon: true,
-                    external: false,
+                    soon: false,
+                    external: true,
                   },
                   {
                     icon: Github,

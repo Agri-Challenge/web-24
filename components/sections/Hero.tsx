@@ -145,7 +145,9 @@ export default function Hero() {
             <ArrowRight size={16} />
           </a>
           <a
-            href="#arxiv"
+            href="https://arxiv.org/abs/2603.07356"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-transparent border-2 border-white/40 text-white text-sm font-semibold rounded-lg hover:border-white hover:bg-white/10 transition-all duration-200"
           >
             <BookOpen size={16} />

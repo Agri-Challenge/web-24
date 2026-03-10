@@ -7,10 +7,10 @@ const links = [
     icon: FileText,
     label: 'arXiv Paper',
     description: 'Read the full paper on AgrI Challenge: Cross-Team Insights from a Data-Centric AI Competition in Agricultural Vision.',
-    href: '#arxiv',
+    href: 'https://arxiv.org/abs/2603.07356',
     cta: 'Read on arXiv',
-    badge: 'Coming Soon' as string | null,
-    external: false,
+    badge: null as string | null,
+    external: true,
   },
   {
     icon: Github,

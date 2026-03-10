@@ -10,7 +10,7 @@ const quickLinks = [
 ];
 
 const externalLinks = [
-  { label: 'arXiv Paper', href: '#arxiv' },
+  { label: 'arXiv Paper', href: 'https://arxiv.org/abs/2603.07356' },
   { label: 'GitHub Repository', href: 'https://github.com/Agri-Challenge/agri-challenge-scripts-2024' },
 ];
 
